@@ -2,36 +2,11 @@
 #include <iomanip> //biblioteka której u¿ywam do wyœwietlania planszy
 #include <conio.h> //bibliotek od funkcji getch
 #include <windows.h> //biblioteka od funkcji Sleep, dziêki której zaimplementowa³am wra¿enie spadania klocka
+#include "board.h"
 
-int board[20][10]; //deklaracja planszy
+//int board[20][10]; //deklaracja planszy
 int currentX = 4, currentY = 0; //deklaracja pocz¹tkowego po³o¿enia klocka na planszy
 int score = 0; //deklaracja pocz¹tkowej iloœci punktów
-
-void generateTab() {//Wype³nienie tablicy 0, aby ³atwiej by³o kontrolowaæ gdzie znajduje siê klocek
-    for (int i = 0; i < 20; i++) {
-        for (int j = 0; j < 10; j++) {
-            board[i][j] = 0;
-        }
-    }
-}
-
-void showBoard() {//wyœwietlenie planszy
-    std::cout << std::setfill('-') << std::setw(13) << "\n";
-    for (int i = 0; i < 20; i++) {
-        std::cout << "|";
-        for (int j = 0; j < 10; j++) {
-            if (board[i][j] == 0)
-                std::cout << " ";
-            else
-                std::cout << board[i][j];
-        }
-        std::cout << "|";
-        std::cout << std::endl;
-    }
-    std::cout << std::setfill('-') << std::setw(13) << "\n";
-    std::cout << "Score : " << score << std::endl;
-
-}
 
 bool ifCollide(int random, char dir) {//Funkcja sprawdzaj¹ca czy jest mo¿liwoœæ przesuniêcia klocka, dir - kierunek w którym klocek ma zostaæ przesuniêty
     if (currentY + 1 > 19) { //gdy jest na koñcu planszy zwraca false
